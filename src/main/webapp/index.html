@@ -26,7 +26,6 @@
             success: function (data) {
                 $.each(data, function (index, element) {
                     let place = "input:radio#" + element.row + element.place
-                    console.log(place)
                     $(place).attr('disabled', true)
                 })
             }
