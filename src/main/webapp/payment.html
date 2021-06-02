@@ -18,18 +18,21 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-    let searchParams = new URLSearchParams(window.location.search);
-    let param = searchParams.get('text');
-    let row = param.split('')[0];
-    let place = param.split('')[1];
-    $('#row').val(row);
-    $('#place').val(place);
+    $(function() {
+        let searchParams = new URLSearchParams(window.location.search);
+        let param = searchParams.get('text');
+        let row = param.split('')[0];
+        let place = param.split('')[1];
+        /*$('#row').val(row);
+    $('#place').val(place);*/
+        $('h3').append("<a>Вы выбрали ряд " + row + " место " + place + ", Сумма : 500 рублей.</a>");
+    });
 </script>
 
 <div class="container">
     <div class="row pt-3">
         <h3>
-            Вы выбрали ряд <a id="row"></a> место <a id="place"></a>, Сумма : 500 рублей.
+            <!--Вы выбрали ряд <a id="row"></a> место <a id="place"></a>, Сумма : 500 рублей.-->
         </h3>
     </div>
     <div class="row">
