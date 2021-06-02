@@ -16,11 +16,20 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    let searchParams = new URLSearchParams(window.location.search);
+    let param = searchParams.get('text');
+    let row = param.split('')[0];
+    let place = param.split('')[1];
+    $('#row').val(row);
+    $('#place').val(place);
+</script>
 
 <div class="container">
     <div class="row pt-3">
         <h3>
-            Вы выбрали ряд 1 место 1, Сумма : 500 рублей.
+            Вы выбрали ряд <a id="row"></a> место <a id="place"></a>, Сумма : 500 рублей.
         </h3>
     </div>
     <div class="row">
