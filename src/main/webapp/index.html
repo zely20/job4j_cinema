@@ -34,7 +34,8 @@
     };
 
     $('button').click(function(){
-        window.location.href = "payment.html";
+        let valueRadio = $('input[name="place"]:checked').val();
+        window.location.href = "payment.html?value=" + valueRadio;
     });
 
         $(document).ready(function () {
