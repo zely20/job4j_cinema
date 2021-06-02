@@ -33,9 +33,12 @@
         }))
     };
 
-    $('button').click(function(){
-        let valueRadio = $('input[name="place"]:checked').val();
-        window.location.href = "payment.html?value=" + valueRadio;
+    $('button[name="pay"]').click(function(){
+        /*let valueRadio = $('input[name="place"]:checked').val();
+        let url = window.location.href + "payment.html";
+            /!*?value=" + valueRadio;*!/
+        window.location.replace(url);*/
+        window.location.href = "payment.html";
     });
 
         $(document).ready(function () {
@@ -81,7 +84,7 @@
         </table>
     </div>
     <div class="row float-right">
-        <button type="button" class="btn btn-success">Оплатить</button>
+        <button type="button" name="pay" class="btn btn-success">Оплатить</button>
     </div>
 </div>
 </body>

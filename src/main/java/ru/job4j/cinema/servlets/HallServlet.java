@@ -15,11 +15,11 @@ public class HallServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Ticket ticket1 = new Ticket(1, 1);
-        Ticket ticket2 = new Ticket(2, 1);
+        /*Ticket ticket1 = new Ticket(1, 1);
+        Ticket ticket2 = new Ticket(2, 1);*/
         List<Ticket> occupiedTickets = new ArrayList<>(0);
-        occupiedTickets.add(ticket1);
-        occupiedTickets.add(ticket2);
+        /*occupiedTickets.add(ticket1);
+        occupiedTickets.add(ticket2);*/
         ObjectMapper mapper = new ObjectMapper();
         String string = mapper.writeValueAsString(occupiedTickets);
         resp.setCharacterEncoding("UTF-8");
