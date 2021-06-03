@@ -23,20 +23,17 @@
         let param = searchParams.get('text');
         let row = param.split('')[0];
         let place = param.split('')[1];
-        /*$('#row').val(row);
-    $('#place').val(place);*/
-        $('h3').append("<a>Вы выбрали ряд " + row + " место " + place + ", Сумма : 500 рублей.</a>");
+        $('form').append("<p>Вы выбрали ряд </p><p id='row'>" + row + "</p><p> место </p><p id='place'>" + place + "</p><p>, Сумма : 500 рублей.</p>");
     });
 </script>
 
 <div class="container">
     <div class="row pt-3">
         <h3>
-            <!--Вы выбрали ряд <a id="row"></a> место <a id="place"></a>, Сумма : 500 рублей.-->
         </h3>
     </div>
     <div class="row">
-        <form>
+        <form action="/pay" method="post">
             <div class="form-group">
                 <label for="username">ФИО</label>
                 <input type="text" class="form-control" id="username" placeholder="ФИО">
@@ -45,7 +42,7 @@
                 <label for="phone">Номер телефона</label>
                 <input type="text" class="form-control" id="phone" placeholder="Номер телефона">
             </div>
-            <button type="button" class="btn btn-success">Оплатить</button>
+            <button type="submit" class="btn btn-success">Оплатить</button>
         </form>
     </div>
 </div>
