@@ -17,40 +17,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="script/payment.js"></script>
 <script>
     let searchParams = new URLSearchParams(window.location.search);
     let param = searchParams.get('text');
     let row = param.split('')[0];
     let place = param.split('')[1];
-
-    function requestPay() {
-        ($.ajax({
-            type: "GET",
-            url: "http://localhost:8080/cinema/pay",
-            async: true,
-            data: { row: row,
-                    place: place,
-                    username: $('#username').val,
-                    phone: $('#phone').val},
-            dataType: "json",
-            success: function (data) {
-
-            },
-        }))
-    };
-
-    $(function() {
-        $('h3').append("<p>Вы выбрали ряд " + row + " место " + place + ", Сумма : 500 рублей.</p>");
-    });
+    addRowAndPlaceToHeader(row,place);
 </script>
-
 <div class="container">
     <div class="row pt-3">
         <h3>
         </h3>
     </div>
     <div class="row">
-        <form>
+        <form id="email_form">
             <div class="form-group">
                 <label for="username">ФИО</label>
                 <input type="text" class="form-control" name="username" id="username" placeholder="ФИО">
@@ -59,7 +40,7 @@
                 <label for="phone">Номер телефона</label>
                 <input type="text" class="form-control" name="phone" id="phone" placeholder="Номер телефона">
             </div>
-            <button type="button" class="btn btn-success">Оплатить</button>
+            <button type="button" class="btn btn-success" onclick="requestPay(row,place)">Оплатить</button>
             <a href="index.html" class="btn btn-success">В зал</a>
         </form>
     </div>

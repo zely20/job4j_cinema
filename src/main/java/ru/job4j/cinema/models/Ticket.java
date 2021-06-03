@@ -5,9 +5,10 @@ import java.util.Objects;
 public class Ticket {
 
     private Integer id;
-    private Integer session_id;
+    private Integer session_id = 1;
     private Integer place;
     private Integer row;
+    private Integer account_id = 1;
 
     public Ticket(Integer place, Integer row) {
         this.place = place;
@@ -44,6 +45,14 @@ public class Ticket {
 
     public void setSession_id(Integer session_id) {
         this.session_id = session_id;
+    }
+
+    public Integer getAccount_id() {
+        return account_id;
+    }
+
+    public void setAccount_id(Integer account_id) {
+        this.account_id = account_id;
     }
 
     @Override

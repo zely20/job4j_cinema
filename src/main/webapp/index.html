@@ -24,47 +24,10 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="script/index.js"></script>
 <script>
 
-    function pay() {
-        ($.ajax({
-            type: "POST",
-            url: "http://localhost:8080/cinema/pay",
-            async: true,
-            dataType: "json",
-            success: function (data) {
-                $.each(data, function (index, element) {
-                    let place = "input:radio#" + element.row + element.place;
-                    $(place).attr('disabled', true)
-                })
-            },
-        }))
-    };
-
-    function requestPlace() {
-        ($.ajax({
-            type: "GET",
-            url: "http://localhost:8080/cinema/hall",
-            async: true,
-            dataType: "json",
-            success: function (data) {
-                $.each(data, function (index, element) {
-                    let place = "input:radio#" + element.row + element.place;
-                    $(place).attr('disabled', true)
-                })
-            },
-        }))
-    };
-
-    function payRedirection() {
-        let valueRadio = $('input[name="place"]:checked').val();
-        if (valueRadio === undefined || valueRadio === "") {
-            alert("choose place")
-            return false;
-        }
-        window.location.href = "payment.html?text=" + valueRadio;
-    }
-
+    /*payRedirection()*/
     $(document).ready(function () {
         requestPlace();
         setInterval(requestPlace, 35000)
