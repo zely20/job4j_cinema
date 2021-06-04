@@ -23,7 +23,6 @@ public class PsqlStoreImpl implements Store {
     private final static String CREATE_TICKET = "INSERT INTO ticket (session_id, row, cell, account_id) VALUES (?, ?, ?, ?);";
 
     private PsqlStoreImpl() {
-
         Properties cfg = new Properties();
         try (BufferedReader io = new BufferedReader(
                 new FileReader("db.properties")
@@ -79,13 +78,13 @@ public class PsqlStoreImpl implements Store {
             ps.setInt(2, ticket.getRow());
             ps.setInt(3, ticket.getPlace());
             ps.setInt(4, ticket.getAccount_id());
-            ps.execute();
+            ps.executeQuery();
             try (ResultSet id = ps.getGeneratedKeys()) {
                 if (id.next()) {
                     ticket.setId(id.getInt(1));
                 }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             LOG.error("create ticket error", e);
         }
         return ticket;
