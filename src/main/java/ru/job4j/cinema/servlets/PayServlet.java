@@ -20,7 +20,7 @@ public class PayServlet extends HttpServlet {
             String phone = req.getParameter("phone");
             Integer row = Integer.valueOf(req.getParameter("r"));
             Integer place = Integer.valueOf(req.getParameter("p"));
-            Ticket savedTicket = PsqlStoreImpl.instOf().saveTicket(new Ticket(row, place));
+            Ticket savedTicket = PsqlStoreImpl.instOf().saveTicket(new Ticket(place, row));
             if(savedTicket.getId() != 0) {
             JSONObject json = new JSONObject();
             json.put("answer", "Вы купили билет ряд " + savedTicket.getRow() + " место " + savedTicket.getPlace());

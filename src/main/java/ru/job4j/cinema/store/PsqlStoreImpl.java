@@ -25,7 +25,7 @@ public class PsqlStoreImpl implements Store {
     private PsqlStoreImpl() {
         Properties cfg = new Properties();
         try (BufferedReader io = new BufferedReader(
-                new FileReader("db.properties")
+                new FileReader("db_cinema.properties")
         )) {
             cfg.load(io);
         } catch (Exception e) {
@@ -66,7 +66,7 @@ public class PsqlStoreImpl implements Store {
         } catch (SQLException e) {
             LOG.error("FIND ALL TICKET ERROR", e);
         }
-        return null;
+        return tickets;
     }
 
     @Override
@@ -78,7 +78,7 @@ public class PsqlStoreImpl implements Store {
             ps.setInt(2, ticket.getRow());
             ps.setInt(3, ticket.getPlace());
             ps.setInt(4, ticket.getAccount_id());
-            ps.executeQuery();
+            ps.execute();
             try (ResultSet id = ps.getGeneratedKeys()) {
                 if (id.next()) {
                     ticket.setId(id.getInt(1));
